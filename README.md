@@ -3,6 +3,9 @@
 > **HACKIIITD Hackathon Project**  
 > *Empowering Traditional Indian Artisans to Digitize, Price, and Sell Nationwide without Technical Skills.*
 
+**🌐 Live Demo:** [https://kalasetu-india.vercel.app](https://kalasetu-india.vercel.app) *(Alternate: [https://kalasetu-hackiiitd.vercel.app](https://kalasetu-hackiiitd.vercel.app))*  
+**📦 GitHub:** [https://github.com/MokshJindal/HackIIITD](https://github.com/MokshJindal/HackIIITD)
+
 ---
 
 ## 📌 Problem Statement Overview
