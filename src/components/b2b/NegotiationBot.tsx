@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { 
-  MessageSquare, 
   Send, 
   Volume2, 
-  Sparkles, 
   CheckCircle2, 
-  FileText, 
-  Mic, 
-  ArrowRightLeft, 
   Languages, 
   ShieldCheck,
   User,
@@ -37,7 +32,7 @@ export const NegotiationBot: React.FC = () => {
       sender: 'bot',
       textRegional: 'नमस्ते रमेश जी! मुंबई से ताज होटल वाले 60 फूलदान दिवाली के लिए मांग रहे हैं। वो एक पीस के लिए ₹380 दे रहे हैं। क्या आप इस भाव में देंगे?',
       regionalLang: 'Hindi (अवधी/हिंदी)',
-      audioVoice: 'Namaste Ramesh ji, Mumbai se Taj Hotel wale 60 phool-daan mang rahe hain...',
+      audioVoice: 'Namaste Ramesh ji...',
       time: '10:30 AM',
     },
   ]);
@@ -46,7 +41,6 @@ export const NegotiationBot: React.FC = () => {
   const [isTranslating, setIsTranslating] = useState(false);
   const [dealFinalized, setDealFinalized] = useState(false);
 
-  // Quick counter-offer presets for artisan in regional dialect
   const artisanQuickReplies = [
     {
       labelHi: 'कम से कम ₹440 लगेंगे (शुद्ध हाथ का काम)',
@@ -68,7 +62,6 @@ export const NegotiationBot: React.FC = () => {
   const handleArtisanReply = (reply: typeof artisanQuickReplies[0]) => {
     setIsTranslating(true);
 
-    // 1. Add artisan message
     const artisanMsg: ChatMessage = {
       id: `m-${Date.now()}`,
       sender: 'artisan',
@@ -79,7 +72,6 @@ export const NegotiationBot: React.FC = () => {
 
     setMessages((prev) => [...prev, artisanMsg]);
 
-    // 2. AI Bot formulates professional English counter-offer
     setTimeout(() => {
       const botMsg: ChatMessage = {
         id: `m-${Date.now() + 1}`,
@@ -111,7 +103,6 @@ export const NegotiationBot: React.FC = () => {
     setBuyerInput('');
     setIsTranslating(true);
 
-    // AI bot translates to Hindi for artisan
     setTimeout(() => {
       const translatedForArtisan: ChatMessage = {
         id: `m-${Date.now() + 1}`,
@@ -137,54 +128,53 @@ export const NegotiationBot: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6 space-y-6">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-amber-950 via-[#3a2012] to-amber-950 border border-amber-800/40 rounded-2xl p-6 text-amber-50 shadow-2xl">
+      <div className="bg-white border border-stone-200/90 rounded-2xl p-6 shadow-sm text-stone-900">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-950/80 border border-orange-500/40 text-orange-300 text-xs font-semibold mb-2">
-              <Languages className="w-3.5 h-3.5 text-orange-400" />
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-stone-100 border border-stone-200 text-stone-700 text-xs font-medium mb-2">
+              <Languages className="w-3.5 h-3.5 text-stone-700" />
               <span>Real-Time Vernacular B2B Voice & Text Mediator</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold tracking-tight text-stone-900">
               Multilingual Negotiation Bot (द्विभाषी सौदा वार्तालाप)
             </h1>
-            <p className="text-amber-200/80 text-xs sm:text-sm max-w-2xl mt-1">
-              Solves the critical "last mile" of closing bulk wholesale deals. Corporate buyers message in professional English while rural artisans respond naturally in their mother tongue.
+            <p className="text-stone-600 text-xs sm:text-sm max-w-2xl mt-1 leading-relaxed">
+              Wholesale buyers communicate in professional English while rural artisans respond naturally in their mother tongue.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 bg-emerald-950/80 px-3 py-2 rounded-xl border border-emerald-500/40 text-xs text-emerald-300">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>Smart Contract & Escrow Protected</span>
+          <div className="flex items-center gap-2 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200 text-xs text-emerald-800">
+            <ShieldCheck className="w-4 h-4 text-emerald-700" />
+            <span>Escrow & Smart Contract Protected</span>
           </div>
         </div>
       </div>
 
-      {/* Main Split Chat: Left = Corporate Buyer (English), Right = Artisan Dialect (Hindi/Odia) */}
+      {/* Main Split Chat */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* LEFT COLUMN: Corporate Buyer Interface (English) */}
-        <div className="lg:col-span-6 bg-amber-950/20 border border-amber-800/40 rounded-3xl p-5 shadow-2xl flex flex-col justify-between h-[520px]">
+        {/* LEFT COLUMN: Corporate Buyer (English) */}
+        <div className="lg:col-span-6 bg-white border border-stone-200/90 rounded-2xl p-5 shadow-sm flex flex-col justify-between h-[520px]">
           <div>
-            {/* Buyer Header */}
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-amber-800/40">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-stone-100">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center font-bold text-sm">
-                  <User className="w-5 h-5" />
+                <div className="w-8 h-8 rounded-full bg-stone-100 text-stone-700 border border-stone-200 flex items-center justify-center font-bold text-xs">
+                  <User className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-amber-100">
+                  <h4 className="text-sm font-bold text-stone-900">
                     Taj Corporate Procurement (Mumbai)
                   </h4>
-                  <p className="text-[10px] text-amber-400/80">
+                  <p className="text-[11px] text-stone-500">
                     Buyer Language: English (Formal B2B)
                   </p>
                 </div>
               </div>
-              <span className="text-[10px] font-mono bg-blue-950 text-blue-300 px-2 py-0.5 rounded border border-blue-500/30">
-                Verified B2B Buyer
+              <span className="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded border border-stone-200">
+                Verified Buyer
               </span>
             </div>
 
-            {/* Buyer Message Feed */}
+            {/* Messages Feed */}
             <div className="h-[340px] overflow-y-auto space-y-3 p-2 scrollbar-none">
               {messages
                 .filter((m) => m.sender === 'buyer' || (m.sender === 'bot' && m.textEn))
@@ -196,21 +186,21 @@ export const NegotiationBot: React.FC = () => {
                     }`}
                   >
                     <div
-                      className={`max-w-[85%] rounded-2xl p-3.5 text-xs ${
+                      className={`max-w-[85%] rounded-2xl p-3 text-xs leading-relaxed ${
                         m.sender === 'buyer'
-                          ? 'bg-blue-600 text-white shadow-md'
-                          : 'bg-amber-900/40 border border-amber-700/50 text-amber-100'
+                          ? 'bg-stone-900 text-white shadow-2xs'
+                          : 'bg-stone-50 border border-stone-200 text-stone-800'
                       }`}
                     >
                       {m.sender === 'bot' && (
-                        <div className="flex items-center gap-1 text-[10px] text-orange-300 font-bold mb-1">
+                        <div className="flex items-center gap-1 text-[10px] text-orange-700 font-bold mb-1">
                           <Bot className="w-3 h-3" />
                           <span>AI Negotiator</span>
                         </div>
                       )}
-                      <p className="leading-relaxed">{m.textEn}</p>
+                      <p>{m.textEn}</p>
                     </div>
-                    <span className="text-[9px] text-amber-400/60 mt-0.5 px-1 font-mono">
+                    <span className="text-[9px] text-stone-400 mt-0.5 px-1 font-mono">
                       {m.time}
                     </span>
                   </div>
@@ -218,53 +208,52 @@ export const NegotiationBot: React.FC = () => {
             </div>
           </div>
 
-          {/* Buyer Input Box */}
-          <div className="flex gap-2 pt-2 border-t border-amber-800/40">
+          {/* Input Box */}
+          <div className="flex gap-2 pt-2 border-t border-stone-100">
             <input
               type="text"
               value={buyerInput}
               onChange={(e) => setBuyerInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleBuyerSend()}
-              placeholder="Counter-offer (e.g. Can you do ₹430 for 60 units?)..."
-              className="flex-1 bg-amber-950/60 border border-amber-700/60 rounded-xl px-3 py-2 text-xs text-amber-100 focus:outline-none placeholder-amber-400/40"
+              placeholder="Type counter-offer in English..."
+              className="flex-1 bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-800 focus:outline-none focus:ring-1 focus:ring-stone-400 placeholder-stone-400"
             />
             <button
               onClick={handleBuyerSend}
-              className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-1 transition-all"
+              className="px-4 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-medium text-xs flex items-center gap-1 transition-colors"
             >
               <Send className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
 
-        {/* RIGHT COLUMN: Artisan Regional Dialect Interface (Hindi / Odia) */}
-        <div className="lg:col-span-6 bg-[#1f1610] border-2 border-amber-600/50 rounded-3xl p-5 shadow-2xl flex flex-col justify-between h-[520px]">
+        {/* RIGHT COLUMN: Artisan Dialect Screen */}
+        <div className="lg:col-span-6 bg-white border border-stone-200/90 rounded-2xl p-5 shadow-sm flex flex-col justify-between h-[520px]">
           <div>
-            {/* Artisan Header */}
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-amber-800/40">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-stone-100">
               <div className="flex items-center gap-2.5">
                 <img
                   src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400"
                   alt="Artisan"
-                  className="w-9 h-9 rounded-full object-cover border border-amber-500"
+                  className="w-8 h-8 rounded-full object-cover border border-stone-200"
                 />
                 <div>
-                  <h4 className="text-sm font-bold text-amber-100">
+                  <h4 className="text-sm font-bold text-stone-900">
                     Rameshwar Prajapati (कारीगर स्क्रीन)
                   </h4>
-                  <p className="text-[10px] text-emerald-400 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Dialect: Hindi (अवधी) Voice & Script</span>
+                  <p className="text-[11px] text-emerald-700 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                    <span>Dialect: Hindi (अवधी) Voice & Text</span>
                   </p>
                 </div>
               </div>
 
-              <span className="text-[10px] font-mono bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30">
+              <span className="text-[10px] font-mono bg-stone-100 text-stone-700 px-2 py-0.5 rounded border border-stone-200">
                 Pehchan ID: 8849-01
               </span>
             </div>
 
-            {/* Artisan Regional Feed */}
+            {/* Regional Feed */}
             <div className="h-[270px] overflow-y-auto space-y-3 p-2 scrollbar-none">
               {messages
                 .filter((m) => m.sender === 'artisan' || (m.sender === 'bot' && m.textRegional))
@@ -278,27 +267,27 @@ export const NegotiationBot: React.FC = () => {
                     <div
                       className={`max-w-[85%] rounded-2xl p-3 text-xs ${
                         m.sender === 'artisan'
-                          ? 'bg-amber-600 text-white shadow-md'
-                          : 'bg-amber-900/40 border border-amber-700/50 text-amber-100'
+                          ? 'bg-stone-900 text-white shadow-2xs'
+                          : 'bg-stone-50 border border-stone-200 text-stone-800'
                       }`}
                     >
                       <div className="flex items-center justify-between gap-2 mb-1">
-                        <span className="text-[10px] text-amber-300 font-bold">
-                          {m.sender === 'artisan' ? 'आपका उत्तर' : 'बॉट का अनुवाद (ऑडियो)'}
+                        <span className="text-[10px] text-stone-500 font-medium">
+                          {m.sender === 'artisan' ? 'आपका उत्तर' : 'बॉट का अनुवाद'}
                         </span>
                         {m.textRegional && (
                           <button
                             onClick={() => playTTS(m.textRegional || '')}
-                            className="text-[10px] text-amber-300 hover:text-white flex items-center gap-0.5 bg-black/30 px-1.5 py-0.5 rounded"
+                            className="text-[10px] text-stone-600 hover:text-stone-900 flex items-center gap-0.5 bg-white px-1.5 py-0.5 rounded border border-stone-200"
                           >
                             <Volume2 className="w-2.5 h-2.5" />
                             <span>सुनें</span>
                           </button>
                         )}
                       </div>
-                      <p className="leading-relaxed font-serif">{m.textRegional}</p>
+                      <p className="leading-relaxed font-serif text-sm">{m.textRegional}</p>
                     </div>
-                    <span className="text-[9px] text-amber-400/60 mt-0.5 px-1 font-mono">
+                    <span className="text-[9px] text-stone-400 mt-0.5 px-1 font-mono">
                       {m.time}
                     </span>
                   </div>
@@ -306,9 +295,9 @@ export const NegotiationBot: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Vernacular One-Tap Replies for Artisan */}
-          <div className="pt-2 border-t border-amber-800/40 space-y-2">
-            <span className="text-[11px] font-semibold text-amber-300 block">
+          {/* Quick Replies */}
+          <div className="pt-2 border-t border-stone-100 space-y-2">
+            <span className="text-xs font-semibold text-stone-700 block">
               कारीगर के लिए त्वरित विकल्प (1-Tap Dialect Replies):
             </span>
             <div className="space-y-1.5">
@@ -317,10 +306,10 @@ export const NegotiationBot: React.FC = () => {
                   key={i}
                   disabled={isTranslating}
                   onClick={() => handleArtisanReply(reply)}
-                  className="w-full text-left p-2 rounded-xl bg-amber-900/30 hover:bg-amber-800/50 border border-amber-700/40 text-amber-200 text-xs font-serif transition-all hover:scale-[1.01] flex items-center justify-between"
+                  className="w-full text-left p-2 rounded-xl bg-stone-50 hover:bg-stone-100 border border-stone-200 text-stone-800 text-xs font-serif transition-colors flex items-center justify-between"
                 >
                   <span className="truncate">{reply.labelHi}</span>
-                  <span className="text-[10px] text-amber-400 font-sans font-semibold shrink-0 ml-2">
+                  <span className="text-[10px] text-stone-500 font-sans font-medium shrink-0 ml-2">
                     भेजें →
                   </span>
                 </button>
@@ -328,14 +317,14 @@ export const NegotiationBot: React.FC = () => {
             </div>
 
             {dealFinalized && (
-              <div className="p-2.5 rounded-xl bg-emerald-950/80 border border-emerald-500/50 flex items-center justify-between text-xs">
-                <span className="font-bold text-emerald-300 flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>डील पक्की! ₹430 × 60 = ₹25,800</span>
+              <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between text-xs">
+                <span className="font-semibold text-emerald-900 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
+                  <span>सौदा पक्का! ₹430 × 60 = ₹25,800</span>
                 </span>
                 <button
-                  onClick={() => alert('Official ONDC B2B Purchase Order & Advance Escrow Invoice Generated!')}
-                  className="px-2.5 py-1 rounded bg-emerald-600 text-white font-bold text-[11px]"
+                  onClick={() => alert('Official ONDC B2B Purchase Order & Escrow Invoice Generated!')}
+                  className="px-2.5 py-1 rounded bg-stone-900 hover:bg-stone-800 text-white font-medium text-xs"
                 >
                   Generate Invoice
                 </button>

@@ -3,20 +3,12 @@ import {
   Users, 
   CheckCircle2, 
   XCircle, 
-  ShoppingBag, 
-  Layers, 
-  Building2, 
-  ShieldCheck, 
-  ArrowRight,
-  TrendingDown,
-  Sparkles
+  Check 
 } from 'lucide-react';
-import { SAMPLE_CRAFTS } from '../../data/mockData';
 
 export const ClusterOperations: React.FC = () => {
   const [subTab, setSubTab] = useState<'review' | 'cooperative'>('review');
 
-  // Pending listings queue submitted by village artisans
   const [pendingQueue, setPendingQueue] = useState([
     {
       id: 'LST-101',
@@ -50,7 +42,6 @@ export const ClusterOperations: React.FC = () => {
     },
   ]);
 
-  // Cooperative bulk raw material procurement orders
   const [materials] = useState([
     {
       name: 'Alluvial River Clay (Fine Sieved)',
@@ -99,39 +90,38 @@ export const ClusterOperations: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6 space-y-6">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-amber-950 via-[#3a2012] to-amber-950 border border-amber-800/40 rounded-2xl p-6 text-amber-50 shadow-2xl">
+      <div className="bg-white border border-stone-200/90 rounded-2xl p-6 shadow-sm text-stone-900">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-950/80 border border-orange-500/40 text-orange-300 text-xs font-semibold mb-2">
-              <Users className="w-3.5 h-3.5 text-orange-400" />
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-stone-100 border border-stone-200 text-stone-700 text-xs font-medium mb-2">
+              <Users className="w-3.5 h-3.5 text-stone-700" />
               <span>Human-in-the-Loop Operations & Self-Help Group (SHG) Federation</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold tracking-tight text-stone-900">
               Cluster Operations & Material Buying Cooperative
             </h1>
-            <p className="text-amber-200/80 text-xs sm:text-sm max-w-2xl mt-1">
-              Cluster coordinators verify listings in bulk before national ONDC dispatch, and pool raw material demand across 20+ village artisans to negotiate up to 48% bulk supplier discounts.
+            <p className="text-stone-600 text-xs sm:text-sm max-w-2xl mt-1 leading-relaxed">
+              Cluster coordinators review village listings in bulk and aggregate raw material demand across 20+ makers to negotiate up to 48% bulk discounts.
             </p>
           </div>
 
-          {/* Sub-Tabs */}
-          <div className="flex items-center gap-1.5 bg-amber-950/80 p-1.5 rounded-xl border border-amber-800/60 self-start md:self-auto">
+          <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl border border-stone-200 self-start md:self-auto">
             <button
               onClick={() => setSubTab('review')}
-              className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 subTab === 'review'
-                  ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md'
-                  : 'text-amber-300 hover:text-white'
+                  ? 'bg-white text-stone-900 shadow-xs'
+                  : 'text-stone-600 hover:text-stone-900'
               }`}
             >
               Bulk Listing Review
             </button>
             <button
               onClick={() => setSubTab('cooperative')}
-              className={`px-3 py-2 rounded-lg text-xs font-semibold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 subTab === 'cooperative'
-                  ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md'
-                  : 'text-amber-300 hover:text-white'
+                  ? 'bg-white text-stone-900 shadow-xs'
+                  : 'text-stone-600 hover:text-stone-900'
               }`}
             >
               Material Cooperative
@@ -140,22 +130,22 @@ export const ClusterOperations: React.FC = () => {
         </div>
       </div>
 
-      {/* SUB-TAB 1: BULK LISTING REVIEW QUEUE */}
+      {/* SUB-TAB 1: BULK LISTING REVIEW */}
       {subTab === 'review' && (
-        <div className="bg-amber-950/20 border border-amber-800/40 rounded-3xl p-6 shadow-2xl space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-amber-800/40">
+        <div className="bg-white border border-stone-200/90 rounded-2xl p-6 shadow-sm space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-stone-100">
             <div>
-              <h3 className="font-serif font-bold text-base text-amber-100">
+              <h3 className="font-serif font-bold text-base text-stone-900">
                 Pending Cluster Listings Queue (Gorakhpur SHG Hub)
               </h3>
-              <p className="text-[11px] text-amber-300/70">
+              <p className="text-xs text-stone-500">
                 Coordinator review ensures photos, pricing, and GI tags comply with ONDC guidelines
               </p>
             </div>
 
             <button
               onClick={handleBatchApproveAll}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-md self-start sm:self-auto"
+              className="px-4 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs self-start sm:self-auto"
             >
               <CheckCircle2 className="w-4 h-4" />
               <span>Batch Approve All to ONDC</span>
@@ -166,31 +156,31 @@ export const ClusterOperations: React.FC = () => {
             {pendingQueue.map((item) => (
               <div
                 key={item.id}
-                className={`p-4 rounded-2xl border text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all ${
+                className={`p-4 rounded-xl border text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-colors ${
                   item.status === 'approved'
-                    ? 'bg-emerald-950/30 border-emerald-600/50'
+                    ? 'bg-emerald-50/50 border-emerald-200'
                     : item.status === 'rejected'
-                    ? 'bg-rose-950/30 border-rose-600/50'
-                    : 'bg-amber-900/20 border-amber-800/40'
+                    ? 'bg-rose-50/50 border-rose-200'
+                    : 'bg-stone-50 border-stone-200'
                 }`}
               >
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-mono text-[10px] text-amber-400/80 bg-black/40 px-1.5 py-0.2 rounded">
+                    <span className="font-mono text-[10px] text-stone-500 bg-white px-1.5 py-0.2 rounded border border-stone-200">
                       {item.id}
                     </span>
-                    <span className="font-bold text-amber-100 text-sm">{item.craft}</span>
+                    <span className="font-bold text-stone-900 text-sm">{item.craft}</span>
                     {item.giVerified && (
-                      <span className="text-[10px] text-emerald-400 bg-emerald-950 px-1.5 py-0.2 rounded border border-emerald-500/30">
+                      <span className="text-[10px] text-emerald-800 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">
                         GI Verified
                       </span>
                     )}
                   </div>
-                  <div className="text-[11px] text-amber-300/80">
+                  <div className="text-stone-600 text-[11px]">
                     Artisan: <strong>{item.artisan}</strong> • {item.village}
                   </div>
-                  <div className="flex gap-3 text-[10px] text-amber-400/70 mt-1 font-mono">
-                    <span>Suggested Price: <strong className="text-emerald-400">₹{item.suggestedPrice}</strong></span>
+                  <div className="flex gap-3 text-[11px] text-stone-500 mt-1 font-mono">
+                    <span>Suggested Price: <strong className="text-stone-900">₹{item.suggestedPrice}</strong></span>
                     <span>Photo AI Score: <strong>{item.photoQuality}</strong></span>
                   </div>
                 </div>
@@ -200,24 +190,24 @@ export const ClusterOperations: React.FC = () => {
                     <>
                       <button
                         onClick={() => handleReject(item.id)}
-                        className="px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-semibold transition-all"
+                        className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-medium transition-colors"
                       >
                         Request Reshoot
                       </button>
                       <button
                         onClick={() => handleApprove(item.id)}
-                        className="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow"
+                        className="px-4 py-1.5 rounded-lg bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold transition-colors shadow-2xs"
                       >
                         Approve & Publish
                       </button>
                     </>
                   ) : item.status === 'approved' ? (
-                    <span className="text-xs font-bold text-emerald-400 flex items-center gap-1">
+                    <span className="text-xs font-bold text-emerald-700 flex items-center gap-1">
                       <CheckCircle2 className="w-4 h-4" />
                       <span>Approved for ONDC</span>
                     </span>
                   ) : (
-                    <span className="text-xs font-bold text-rose-400 flex items-center gap-1">
+                    <span className="text-xs font-bold text-rose-700 flex items-center gap-1">
                       <XCircle className="w-4 h-4" />
                       <span>Reshoot Requested</span>
                     </span>
@@ -229,19 +219,19 @@ export const ClusterOperations: React.FC = () => {
         </div>
       )}
 
-      {/* SUB-TAB 2: MATERIAL BUYING COOPERATIVE */}
+      {/* SUB-TAB 2: MATERIAL COOPERATIVE */}
       {subTab === 'cooperative' && (
-        <div className="bg-amber-950/20 border border-amber-800/40 rounded-3xl p-6 shadow-2xl space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-amber-800/40">
+        <div className="bg-white border border-stone-200/90 rounded-2xl p-6 shadow-sm space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-stone-100">
             <div>
-              <h3 className="font-serif font-bold text-base text-amber-100">
+              <h3 className="font-serif font-bold text-base text-stone-900">
                 Material Buying Cooperative (थोक कच्चा माल खरीद संघ)
               </h3>
-              <p className="text-[11px] text-amber-300/70">
+              <p className="text-xs text-stone-500">
                 Combines individual artisans' clay, glaze, and box orders for bulk negotiation
               </p>
             </div>
-            <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-500/40">
+            <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
               Avg Savings: 38%
             </span>
           </div>
@@ -250,43 +240,43 @@ export const ClusterOperations: React.FC = () => {
             {materials.map((m, idx) => (
               <div
                 key={idx}
-                className="bg-amber-900/20 border border-amber-800/30 rounded-2xl p-4 flex flex-col justify-between text-xs space-y-3"
+                className="bg-stone-50 border border-stone-200 rounded-2xl p-4 flex flex-col justify-between text-xs space-y-3"
               >
                 <div>
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-amber-100 text-sm">{m.name}</span>
+                    <span className="font-bold text-stone-900 text-sm">{m.name}</span>
                   </div>
-                  <span className="text-[10px] text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">
+                  <span className="text-[10px] text-emerald-800 font-bold bg-emerald-100/70 px-2 py-0.5 rounded border border-emerald-200">
                     {m.savings}
                   </span>
 
-                  <div className="mt-3 bg-black/30 p-2.5 rounded-xl border border-white/5 space-y-1 font-mono text-[11px]">
-                    <div className="flex justify-between text-stone-300">
+                  <div className="mt-3 bg-white p-3 rounded-xl border border-stone-200 space-y-1 font-mono text-xs">
+                    <div className="flex justify-between text-stone-600">
                       <span>Artisans Pooled:</span>
-                      <strong className="text-amber-200">{m.totalArtisans} makers</strong>
+                      <strong className="text-stone-900">{m.totalArtisans} makers</strong>
                     </div>
-                    <div className="flex justify-between text-stone-300">
+                    <div className="flex justify-between text-stone-600">
                       <span>Total Volume:</span>
-                      <strong className="text-amber-200">{m.aggregatedQuantity}</strong>
+                      <strong className="text-stone-900">{m.aggregatedQuantity}</strong>
                     </div>
-                    <div className="flex justify-between text-stone-300">
+                    <div className="flex justify-between text-stone-500">
                       <span>Individual Retail:</span>
-                      <span className="line-through text-stone-400">{m.individualRate}</span>
+                      <span className="line-through">{m.individualRate}</span>
                     </div>
-                    <div className="flex justify-between text-emerald-400 font-bold">
+                    <div className="flex justify-between text-emerald-800 font-bold">
                       <span>Co-op Negotiated:</span>
                       <span>{m.coopBulkRate}</span>
                     </div>
                   </div>
 
-                  <div className="text-[10px] text-amber-400/80 mt-2">
-                    Supplier: <strong>{m.supplier}</strong>
+                  <div className="text-[11px] text-stone-500 mt-2">
+                    Supplier: <strong className="text-stone-700">{m.supplier}</strong>
                   </div>
                 </div>
 
                 <button
                   onClick={() => alert(`Group Purchase Order for ${m.aggregatedQuantity} sent to ${m.supplier}!`)}
-                  className="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs transition-all shadow"
+                  className="w-full py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-medium text-xs transition-colors shadow-2xs"
                 >
                   Confirm Group Purchase Order
                 </button>

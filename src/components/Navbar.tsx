@@ -12,7 +12,7 @@ import {
   Leaf, 
   Users, 
   Wifi, 
-  Radio
+  Languages
 } from 'lucide-react';
 import { Language } from '../types';
 
@@ -33,87 +33,87 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const navTabs = [
     { id: 'studio', label: 'Artisan Studio', labelHi: 'शिल्प स्टूडियो', icon: Mic },
-    { id: 'tinyfish', label: 'TinyFish Live Intel', labelHi: 'टाइनीफिश इंटेलिजेंस', icon: Sparkles },
-    { id: 'trends', label: 'AI Trend Forecaster', labelHi: 'ट्रेंड फोरकास्टर', icon: TrendingUp },
+    { id: 'tinyfish', label: 'TinyFish Intel', labelHi: 'टाइनीफिश इंटेलिजेंस', icon: Sparkles },
+    { id: 'trends', label: 'Trend Forecaster', labelHi: 'ट्रेंड फोरकास्टर', icon: TrendingUp },
     { id: 'ondc', label: 'ONDC Gateway', labelHi: 'ओएनडीसी नेटवर्क', icon: Globe },
-    { id: 'passport', label: 'Maker Passport & QR', labelHi: 'शिल्पकार पासपोर्ट', icon: ShieldCheck },
-    { id: 'ar3d', label: '3D & AR "Will It Fit?"', labelHi: '3D/AR रूम व्यू', icon: Box },
-    { id: 'b2b-bot', label: 'B2B Negotiation Bot', labelHi: 'वार्तालाप बॉट', icon: MessageSquare },
-    { id: 'shilp-score', label: 'Shilp-Score Credit', labelHi: 'शिल्प-स्कोर क्रेडिट', icon: CreditCard },
-    { id: 'co-shipping', label: 'Smart Co-Shipping', labelHi: 'क्लस्टर शिपिंग', icon: Truck },
-    { id: 'eco-passport', label: 'Eco-Passport (ESG)', labelHi: 'पर्यावरण पासपोर्ट', icon: Leaf },
-    { id: 'cluster-ops', label: 'Cluster Operations', labelHi: 'क्लस्टर प्रबंधन', icon: Users },
+    { id: 'passport', label: 'Maker Passport', labelHi: 'शिल्पकार पासपोर्ट', icon: ShieldCheck },
+    { id: 'ar3d', label: '3D & AR Room', labelHi: '3D/AR रूम व्यू', icon: Box },
+    { id: 'b2b-bot', label: 'Negotiation Bot', labelHi: 'वार्तालाप बॉट', icon: MessageSquare },
+    { id: 'shilp-score', label: 'Shilp-Score', labelHi: 'शिल्प-स्कोर क्रेडिट', icon: CreditCard },
+    { id: 'co-shipping', label: 'Co-Shipping', labelHi: 'क्लस्टर शिपिंग', icon: Truck },
+    { id: 'eco-passport', label: 'Eco-Passport', labelHi: 'पर्यावरण पासपोर्ट', icon: Leaf },
+    { id: 'cluster-ops', label: 'Cluster Ops', labelHi: 'क्लस्टर प्रबंधन', icon: Users },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-[#2c1d11] text-amber-50 shadow-xl border-b border-amber-900/60 backdrop-blur-md">
-      {/* Top Banner with Project Branding and Government/ONDC Affiliation */}
-      <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 border-b border-amber-800/40 text-xs">
-        <div className="flex items-center gap-2 text-amber-200">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+      {/* Subtle Utility Topbar */}
+      <div className="max-w-7xl mx-auto px-4 py-1.5 flex flex-wrap items-center justify-between gap-3 border-b border-stone-100 text-xs text-stone-600">
+        <div className="flex items-center gap-2">
           <span className="flex h-2 w-2 relative">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
           </span>
-          <span className="font-medium tracking-wide">
-            HACKIIITD Finalist Project: <strong className="text-amber-100">KalaSetu (कलासेतु)</strong>
+          <span className="font-medium text-stone-800">
+            KalaSetu (कलासेतु)
           </span>
-          <span className="hidden md:inline text-amber-400/60">|</span>
-          <span className="hidden md:inline text-amber-300">
-            Powered by TinyFish Web Scrape & Autonomous Agent APIs + ONDC Beckn Protocol
+          <span className="text-stone-300">/</span>
+          <span className="hidden sm:inline text-stone-500">
+            HACKIIITD • Handicraft Digitization & ONDC Linkage
           </span>
         </div>
 
         {/* Status Indicators & Language Selector */}
-        <div className="flex items-center gap-3">
-          {/* Offline Local Queue Status (Flutter/SQLite Simulation) */}
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-950/80 border border-amber-700/50 text-[11px] text-amber-300">
-            <Wifi className="w-3.5 h-3.5 text-emerald-400" />
-            <span>SQLite Offline Queue:</span>
-            <span className="font-semibold text-emerald-400">
-              {offlineQueueCount === 0 ? 'Synced (Online)' : `${offlineQueueCount} Cached`}
+        <div className="flex items-center gap-2.5">
+          {/* Offline Local Queue Status */}
+          <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-stone-50 border border-stone-200 text-[11px] text-stone-600">
+            <Wifi className="w-3 h-3 text-emerald-600" />
+            <span>SQLite Offline Sync:</span>
+            <span className="font-semibold text-stone-800">
+              {offlineQueueCount === 0 ? 'Ready' : `${offlineQueueCount} Cached`}
             </span>
           </div>
 
           {/* Regional Dialect Selector */}
-          <div className="flex items-center gap-1.5 bg-amber-900/40 px-2 py-0.5 rounded border border-amber-700/50">
-            <Radio className="w-3.5 h-3.5 text-amber-400" />
+          <div className="flex items-center gap-1 bg-stone-50 px-2 py-0.5 rounded-md border border-stone-200">
+            <Languages className="w-3 h-3 text-stone-500" />
             <select
               value={language}
               onChange={(e) => setLanguage(e.target.value as Language)}
-              className="bg-transparent text-amber-100 text-xs font-medium focus:outline-none cursor-pointer"
+              className="bg-transparent text-stone-800 text-xs font-medium focus:outline-none cursor-pointer"
             >
-              <option value="en" className="bg-amber-950 text-amber-100">English (India)</option>
-              <option value="hi" className="bg-amber-950 text-amber-100">हिंदी (Hindi)</option>
-              <option value="or" className="bg-amber-950 text-amber-100">ଓଡ଼ିଆ (Odia)</option>
-              <option value="ta" className="bg-amber-950 text-amber-100">தமிழ் (Tamil)</option>
-              <option value="bn" className="bg-amber-950 text-amber-100">বাংলা (Bengali)</option>
+              <option value="en">English</option>
+              <option value="hi">हिंदी (Hindi)</option>
+              <option value="or">ଓଡ଼ିଆ (Odia)</option>
+              <option value="ta">தமிழ் (Tamil)</option>
+              <option value="bn">বাংলা (Bengali)</option>
             </select>
           </div>
         </div>
       </div>
 
-      {/* Main Logo & Navigation Pills */}
-      <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
+      {/* Main Branding & Navigation Tabs */}
+      <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-col md:flex-row items-center justify-between gap-3">
         <div 
           onClick={() => setActiveTab('studio')}
-          className="flex items-center gap-3 cursor-pointer group"
+          className="flex items-center gap-2.5 cursor-pointer group"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-600 via-orange-600 to-red-700 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform border border-amber-400/30">
-            <Sparkles className="w-6 h-6 text-amber-100" />
+          <div className="w-8 h-8 rounded-lg bg-stone-900 text-stone-50 flex items-center justify-center font-serif font-black text-sm shadow-sm group-hover:bg-orange-700 transition-colors">
+            क
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold tracking-tight text-white font-serif">KalaSetu</span>
-              <span className="text-sm font-semibold text-amber-400 bg-amber-950/90 px-1.5 py-0.5 rounded border border-amber-600/40">कलासेतु</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-lg font-bold tracking-tight text-stone-900 font-serif">KalaSetu</span>
+              <span className="text-xs font-medium text-stone-600 bg-stone-100 px-1.5 py-0.2 rounded border border-stone-200">कलासेतु</span>
             </div>
-            <p className="text-[11px] text-amber-300/80 -mt-0.5">
-              Zero-Technical Skill Artisan Digitization & Autonomous Market Linkage
+            <p className="text-[10px] text-stone-500 -mt-0.5">
+              Zero-Technical Skill Artisan Digitization Platform
             </p>
           </div>
         </div>
 
-        {/* Scrollable Tab Navigation */}
-        <nav className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none">
+        {/* Scrollable Clean Navigation Pills */}
+        <nav className="flex items-center gap-1 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none">
           {navTabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -121,13 +121,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all duration-200 ${
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all duration-150 ${
                   isActive
-                    ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-md shadow-orange-950/50 border border-amber-400/40'
-                    : 'text-amber-200/80 hover:text-white hover:bg-amber-900/40'
+                    ? 'bg-stone-900 text-white shadow-sm'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100'
                 }`}
               >
-                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-amber-400'}`} />
+                <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-stone-400'}`} />
                 <span>{language === 'hi' ? tab.labelHi : tab.label}</span>
               </button>
             );

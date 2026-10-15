@@ -10,11 +10,7 @@ import {
   CreditCard, 
   Truck, 
   Leaf, 
-  Users, 
-  ChevronRight, 
-  CheckCircle2, 
-  Info,
-  HelpCircle
+  Users 
 } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { ArtisanStudio } from './components/studio/ArtisanStudio';
@@ -28,32 +24,31 @@ import { ShilpScore } from './components/fintech/ShilpScore';
 import { ClusterCoShipping } from './components/logistics/ClusterCoShipping';
 import { EcoPassport } from './components/eco/EcoPassport';
 import { ClusterOperations } from './components/cluster/ClusterOperations';
-import { Language, GeneratedListing, CraftSample } from './types';
+import { Language, GeneratedListing } from './types';
 import './App.css';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('studio');
-  const [language, setLanguage] = useState<Language>('hi'); // Default Hindi for authentic artisan vernacular feel
+  const [language, setLanguage] = useState<Language>('hi');
   const [offlineQueueCount, setOfflineQueueCount] = useState<number>(0);
   const [publishedListing, setPublishedListing] = useState<GeneratedListing | null>(null);
 
-  // Quick navigation items for the Hackathon Judge Showcase Bar
   const showcaseModules = [
     { id: 'studio', label: '1. Voice-to-Listing Studio', icon: Mic },
     { id: 'tinyfish', label: '2. TinyFish Headless Agent', icon: Sparkles },
-    { id: 'trends', label: '3. AI Trend Forecaster', icon: TrendingUp },
+    { id: 'trends', label: '3. Trend Forecaster', icon: TrendingUp },
     { id: 'ondc', label: '4. ONDC 0% Commission', icon: Globe },
     { id: 'passport', label: '5. Maker QR Passport', icon: ShieldCheck },
-    { id: 'ar3d', label: '6. 3D/AR "Will It Fit?"', icon: Box },
+    { id: 'ar3d', label: '6. 3D/AR Room Check', icon: Box },
     { id: 'b2b-bot', label: '7. B2B Negotiation Bot', icon: MessageSquare },
     { id: 'shilp-score', label: '8. Shilp-Score Credit', icon: CreditCard },
-    { id: 'co-shipping', label: '9. Smart Co-Shipping', icon: Truck },
+    { id: 'co-shipping', label: '9. Cluster Co-Shipping', icon: Truck },
     { id: 'eco-passport', label: '10. Eco-Passport (ESG)', icon: Leaf },
     { id: 'cluster-ops', label: '11. Cluster Operations', icon: Users },
   ];
 
   return (
-    <div className="min-h-screen bg-[#1c150f] text-amber-50 flex flex-col font-sans selection:bg-amber-600 selection:text-white">
+    <div className="min-h-screen bg-[#faf9f6] text-stone-900 flex flex-col font-sans selection:bg-stone-900 selection:text-white">
       {/* Top Main Navigation Bar */}
       <Navbar
         activeTab={activeTab}
@@ -87,18 +82,17 @@ export function App() {
         {activeTab === 'cluster-ops' && <ClusterOperations />}
       </main>
 
-      {/* Persistent Bottom Hackathon Judge Navigation Pill Bar */}
-      <footer className="sticky bottom-0 z-40 bg-stone-950/95 border-t border-amber-800/60 backdrop-blur-md py-2.5 px-4">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-amber-300">
-            <span className="font-bold text-amber-400 font-serif">KalaSetu Evaluation Deck:</span>
-            <span className="hidden md:inline text-stone-400 text-[11px]">
-              Directly jump to any of the 11 hackathon modules:
+      {/* Bottom Evaluation Showcase Bar */}
+      <footer className="sticky bottom-0 z-40 bg-white/95 border-t border-stone-200/90 backdrop-blur-md py-2 px-4 shadow-[0_-2px_10px_rgba(0,0,0,0.03)]">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs">
+          <div className="flex items-center gap-2 text-stone-800">
+            <span className="font-semibold text-stone-900 font-serif">KalaSetu Evaluation Deck:</span>
+            <span className="hidden md:inline text-stone-500 text-[11px]">
+              Directly jump to any module:
             </span>
           </div>
 
-          {/* Quick jump pills */}
-          <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none">
+          <div className="flex items-center gap-1 overflow-x-auto max-w-full pb-0.5 sm:pb-0 scrollbar-none">
             {showcaseModules.map((mod) => {
               const Icon = mod.icon;
               const isSelected = activeTab === mod.id;
@@ -106,13 +100,13 @@ export function App() {
                 <button
                   key={mod.id}
                   onClick={() => setActiveTab(mod.id)}
-                  className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-medium whitespace-nowrap transition-all ${
+                  className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium whitespace-nowrap transition-all ${
                     isSelected
-                      ? 'bg-amber-600 text-white font-bold shadow'
-                      : 'bg-stone-900 text-stone-300 hover:text-white hover:bg-stone-800 border border-stone-800'
+                      ? 'bg-stone-900 text-white shadow-2xs font-semibold'
+                      : 'bg-stone-50 text-stone-600 hover:text-stone-900 hover:bg-stone-100 border border-stone-200/80'
                   }`}
                 >
-                  <Icon className="w-3 h-3 text-amber-400" />
+                  <Icon className={`w-3 h-3 ${isSelected ? 'text-white' : 'text-stone-500'}`} />
                   <span>{mod.label}</span>
                 </button>
               );

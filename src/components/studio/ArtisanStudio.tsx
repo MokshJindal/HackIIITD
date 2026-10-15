@@ -3,16 +3,10 @@ import {
   Sparkles, 
   Send, 
   CheckCircle2, 
-  Layers, 
-  FileText, 
-  Globe2, 
+  ShieldCheck, 
+  Tag, 
   ChevronRight, 
-  RotateCcw, 
-  Share2, 
-  Check, 
-  ArrowRight,
-  ShieldCheck,
-  Tag
+  Check 
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Language, CraftSample, GeneratedListing } from '../../types';
@@ -45,7 +39,6 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
   const [activeLangTab, setActiveLangTab] = useState<'hi' | 'en'>('hi');
   const [isPublished, setIsPublished] = useState<boolean>(false);
 
-  // Run AI processing pipeline
   const handleGenerateListing = async () => {
     setIsProcessingAI(true);
     setIsPublished(false);
@@ -63,7 +56,6 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
     }
   };
 
-  // Switch craft sample
   const handleCraftChange = (craftId: string) => {
     setSelectedCraftId(craftId);
     const craft = SAMPLE_CRAFTS.find((c) => c.id === craftId) || SAMPLE_CRAFTS[0];
@@ -72,14 +64,13 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
     setIsPublished(false);
   };
 
-  // Single-Tap List for Sale
   const handlePublish = () => {
     setIsPublished(true);
     confetti({
-      particleCount: 120,
+      particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#f59e0b', '#ea580c', '#10b981', '#ffffff'],
+      colors: ['#c2410c', '#166534', '#1c1917', '#e7e5e4'],
     });
 
     if (generatedListing && onListingPublished) {
@@ -90,97 +81,96 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
   return (
     <div className="max-w-7xl mx-auto px-4 py-6 space-y-6">
       {/* Studio Header & Workflow Stepper */}
-      <div className="bg-gradient-to-r from-amber-950 via-[#3a2012] to-amber-950 border border-amber-800/50 rounded-2xl p-6 shadow-2xl text-amber-50">
+      <div className="bg-white border border-stone-200/90 rounded-2xl p-6 shadow-sm text-stone-900">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-950/80 border border-orange-500/40 text-orange-300 text-xs font-semibold mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Step-by-Step Artisan Onboarding Studio</span>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-stone-100 border border-stone-200 text-stone-700 text-xs font-medium mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-orange-700" />
+              <span>Voice & Computer Vision Onboarding Studio</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-serif font-bold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold tracking-tight text-stone-900">
               Digitize Your Craft (अपनी हस्तकला को ऑनलाइन बेचें)
             </h1>
-            <p className="text-amber-200/80 text-xs sm:text-sm max-w-2xl mt-1">
-              No technical skills needed. Simply capture a photo and record your voice in your mother tongue.
-              Our AI Studio cleans the photo, writes bilingual SEO listings, and fetches live market prices.
+            <p className="text-stone-600 text-xs sm:text-sm max-w-2xl mt-1 leading-relaxed">
+              No technical skills needed. Capture a photo and record your voice in your mother tongue.
+              Our AI Studio cleans the photo, writes bilingual listings, and suggests fair market prices.
             </p>
           </div>
 
-          {/* Action to trigger AI pipeline */}
           <button
             onClick={handleGenerateListing}
             disabled={isProcessingAI}
-            className={`flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold shadow-xl transition-all duration-300 ${
+            className={`flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold shadow-sm transition-all ${
               isProcessingAI
-                ? 'bg-amber-800 text-amber-300 cursor-wait'
-                : 'bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-stone-950 font-bold hover:scale-[1.02] shadow-orange-950/50'
+                ? 'bg-stone-200 text-stone-500 cursor-wait'
+                : 'bg-stone-900 hover:bg-stone-800 text-white hover:scale-[1.01]'
             }`}
           >
-            <Sparkles className={`w-5 h-5 ${isProcessingAI ? 'animate-spin' : ''}`} />
+            <Sparkles className={`w-4 h-4 ${isProcessingAI ? 'animate-spin' : ''}`} />
             <span>{isProcessingAI ? 'AI Studio Processing...' : 'Generate Catalog & Price'}</span>
           </button>
         </div>
 
         {/* Stepper Visualizer */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 pt-5 border-t border-amber-800/40 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 pt-5 border-t border-stone-100 text-xs">
           <div className="flex items-center gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-[11px]">
+            <span className="w-6 h-6 rounded-full bg-stone-900 text-white font-bold flex items-center justify-center text-[11px]">
               1
             </span>
             <div>
-              <div className="font-semibold text-amber-200">Media Capture & Audio</div>
-              <div className="text-[10px] text-amber-400/70">Photo + Vernacular Voice Note</div>
+              <div className="font-semibold text-stone-900">Media Capture</div>
+              <div className="text-[11px] text-stone-500">Photo + Vernacular Voice</div>
             </div>
           </div>
 
           <div className="flex items-center gap-2.5">
             <span className={`w-6 h-6 rounded-full font-bold flex items-center justify-center text-[11px] ${
-              generatedListing ? 'bg-amber-600 text-white' : 'bg-amber-900/60 text-amber-400'
+              generatedListing ? 'bg-stone-900 text-white' : 'bg-stone-100 text-stone-500 border border-stone-200'
             }`}>
               2
             </span>
             <div>
-              <div className="font-semibold text-amber-200">AI Studio & NLP Engine</div>
-              <div className="text-[10px] text-amber-400/70">rembg + Whisper + Groq LLaMA 3</div>
+              <div className="font-semibold text-stone-900">AI Studio Pipeline</div>
+              <div className="text-[11px] text-stone-500">rembg + Whisper + Groq SEO</div>
             </div>
           </div>
 
           <div className="flex items-center gap-2.5">
             <span className={`w-6 h-6 rounded-full font-bold flex items-center justify-center text-[11px] ${
-              isPublished ? 'bg-emerald-600 text-white' : 'bg-amber-900/60 text-amber-400'
+              isPublished ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-500 border border-stone-200'
             }`}>
               3
             </span>
             <div>
-              <div className="font-semibold text-amber-200">Review & One-Tap Publish</div>
-              <div className="text-[10px] text-amber-400/70">TinyFish Pricing + ONDC Push</div>
+              <div className="font-semibold text-stone-900">Review & Publish</div>
+              <div className="text-[11px] text-stone-500">TinyFish Pricing + ONDC Push</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Live Pipeline Processing Overlay/Progress Banner */}
+      {/* Pipeline Progress Banner */}
       {isProcessingAI && pipelineProgress && (
-        <div className="bg-amber-900/40 border-2 border-amber-500/60 rounded-2xl p-5 shadow-2xl animate-pulse">
+        <div className="bg-stone-50 border border-stone-200 rounded-2xl p-4 shadow-sm">
           <div className="flex items-center justify-between text-xs mb-2">
-            <span className="font-semibold text-amber-200 flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping" />
+            <span className="font-semibold text-stone-800 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-stone-900 animate-ping" />
               <span>{pipelineProgress.message}</span>
             </span>
-            <span className="font-mono font-bold text-amber-300">
+            <span className="font-mono font-bold text-stone-900">
               {pipelineProgress.progressPercent}%
             </span>
           </div>
-          <div className="h-2.5 bg-amber-950 rounded-full overflow-hidden">
+          <div className="h-2 bg-stone-200 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all duration-300"
+              className="h-full bg-stone-900 rounded-full transition-all duration-300"
               style={{ width: `${pipelineProgress.progressPercent}%` }}
             />
           </div>
         </div>
       )}
 
-      {/* Main Grid: Left = Media Capture, Right = AI Output & Review */}
+      {/* Main Grid: Left = Media Capture, Right = AI Output */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* LEFT COLUMN: Media Capture & Edge Pre-Processing */}
         <div className="space-y-6">
@@ -201,36 +191,35 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
         <div className="space-y-6">
           {generatedListing ? (
             <>
-              {/* Product Catalog Card Preview */}
-              <div className="bg-amber-950/20 border border-amber-800/40 rounded-2xl p-5 shadow-xl">
-                <div className="flex items-center justify-between mb-3 pb-3 border-b border-amber-800/40">
+              {/* Product Catalog Card */}
+              <div className="bg-white border border-stone-200/90 rounded-2xl p-5 shadow-sm space-y-3">
+                <div className="flex items-center justify-between pb-3 border-b border-stone-100">
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-950 text-emerald-300 border border-emerald-500/40">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
                       ONDC Catalog Ready
                     </span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-950 text-amber-300 border border-amber-500/40">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-stone-100 text-stone-700 border border-stone-200">
                       {currentCraft.giTag.split('(')[0]}
                     </span>
                   </div>
 
-                  {/* Language Toggle for Catalog */}
-                  <div className="flex items-center gap-1 bg-amber-900/40 p-0.5 rounded-lg border border-amber-700/50">
+                  <div className="flex items-center gap-1 bg-stone-100 p-0.5 rounded-lg border border-stone-200">
                     <button
                       onClick={() => setActiveLangTab('hi')}
-                      className={`px-2.5 py-0.5 rounded text-xs font-semibold transition-all ${
+                      className={`px-2.5 py-0.5 rounded text-xs font-medium transition-all ${
                         activeLangTab === 'hi'
-                          ? 'bg-amber-600 text-white'
-                          : 'text-amber-300 hover:text-white'
+                          ? 'bg-white text-stone-900 shadow-xs'
+                          : 'text-stone-600 hover:text-stone-900'
                       }`}
                     >
                       हिंदी (Hindi)
                     </button>
                     <button
                       onClick={() => setActiveLangTab('en')}
-                      className={`px-2.5 py-0.5 rounded text-xs font-semibold transition-all ${
+                      className={`px-2.5 py-0.5 rounded text-xs font-medium transition-all ${
                         activeLangTab === 'en'
-                          ? 'bg-amber-600 text-white'
-                          : 'text-amber-300 hover:text-white'
+                          ? 'bg-white text-stone-900 shadow-xs'
+                          : 'text-stone-600 hover:text-stone-900'
                       }`}
                     >
                       English
@@ -238,21 +227,20 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
                   </div>
                 </div>
 
-                {/* Generated Title & Story */}
-                <div className="space-y-3">
-                  <h3 className="text-lg font-serif font-bold text-amber-100 leading-snug">
+                {/* Title & Descriptions */}
+                <div className="space-y-2.5">
+                  <h3 className="text-lg font-serif font-bold text-stone-900 leading-snug">
                     {activeLangTab === 'hi' ? generatedListing.titleHi : generatedListing.titleEn}
                   </h3>
 
-                  <p className="text-xs text-amber-200/90 leading-relaxed font-sans">
+                  <p className="text-xs text-stone-600 leading-relaxed">
                     {activeLangTab === 'hi'
                       ? generatedListing.descriptionHi
                       : generatedListing.descriptionEn}
                   </p>
 
-                  {/* Heritage Story Callout */}
-                  <div className="bg-amber-900/30 border-l-2 border-orange-500 p-2.5 rounded-r-lg text-[11px] text-amber-200/80 italic">
-                    <strong className="text-amber-300 not-italic font-semibold block mb-0.5">
+                  <div className="bg-stone-50 border-l-2 border-stone-800 p-3 rounded-r-lg text-xs text-stone-600 italic">
+                    <strong className="text-stone-900 not-italic font-semibold block mb-0.5">
                       Artisan Lineage & Craft Provenance:
                     </strong>
                     {generatedListing.heritageStory}
@@ -263,9 +251,9 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
                     {generatedListing.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-900/30 border border-amber-700/40 text-[10px] text-amber-300"
+                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-stone-100 border border-stone-200 text-[10px] text-stone-700"
                       >
-                        <Tag className="w-2.5 h-2.5 text-amber-400" />
+                        <Tag className="w-2.5 h-2.5 text-stone-500" />
                         <span>{tag}</span>
                       </span>
                     ))}
@@ -288,62 +276,59 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
                 }
               />
 
-              {/* Human-In-The-Loop Approval & Single-Tap Publish Button */}
-              <div className="bg-gradient-to-r from-amber-950 via-amber-900/40 to-amber-950 border-2 border-amber-600/60 rounded-2xl p-5 shadow-2xl">
+              {/* Publish Action Card */}
+              <div className="bg-stone-50 border border-stone-200 rounded-2xl p-5 shadow-sm space-y-4">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <div className="flex items-center gap-1.5 text-amber-300 text-xs font-semibold mb-1">
-                      <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                    <div className="flex items-center gap-1.5 text-stone-900 text-xs font-semibold mb-0.5">
+                      <ShieldCheck className="w-4 h-4 text-emerald-700" />
                       <span>Human-in-the-Loop Safeguard: Verified by Artisan</span>
                     </div>
-                    <p className="text-[11px] text-amber-200/80">
-                      Single tap distributes your verified catalog to ONDC (Paytm, Magicpin, Mystore) and prepares draft on GeM.
+                    <p className="text-xs text-stone-500">
+                      Single tap distributes your verified catalog to ONDC (Paytm, Magicpin, Mystore) with 0% platform fee.
                     </p>
                   </div>
 
                   <button
                     onClick={handlePublish}
-                    className={`shrink-0 w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-xl transition-all duration-300 ${
+                    className={`shrink-0 w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-xs flex items-center justify-center gap-2 shadow-sm transition-all ${
                       isPublished
-                        ? 'bg-emerald-600 text-white shadow-emerald-950/50'
-                        : 'bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white hover:scale-105'
+                        ? 'bg-emerald-700 text-white'
+                        : 'bg-stone-900 hover:bg-stone-800 text-white hover:scale-[1.01]'
                     }`}
                   >
                     {isPublished ? (
                       <>
-                        <Check className="w-5 h-5 text-emerald-200" />
+                        <Check className="w-4 h-4" />
                         <span>Published to ONDC!</span>
                       </>
                     ) : (
                       <>
-                        <Send className="w-5 h-5" />
+                        <Send className="w-4 h-4" />
                         <span>List for Sale (बिक्री के लिए पोस्ट करें)</span>
                       </>
                     )}
                   </button>
                 </div>
 
-                {/* Post-Publish Next Action Quick Links */}
                 {isPublished && (
-                  <div className="mt-4 pt-4 border-t border-amber-800/40 flex flex-wrap items-center justify-between gap-2 text-xs">
-                    <span className="text-emerald-300 font-semibold flex items-center gap-1">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                      <span>Product Live on ONDC Registry! Explore Next:</span>
+                  <div className="pt-3 border-t border-stone-200/80 flex flex-wrap items-center justify-between gap-2 text-xs">
+                    <span className="text-emerald-800 font-semibold flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <span>Product Live on ONDC! Next actions:</span>
                     </span>
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => onNavigateToTab('passport')}
-                        className="px-3 py-1 rounded-lg bg-amber-800/40 hover:bg-amber-700/60 text-amber-200 border border-amber-600/40 flex items-center gap-1 text-[11px]"
+                        className="px-3 py-1.5 rounded-lg bg-white hover:bg-stone-100 text-stone-800 border border-stone-200 text-xs font-medium"
                       >
-                        <span>View Maker QR Passport</span>
-                        <ChevronRight className="w-3 h-3" />
+                        View Maker QR Passport
                       </button>
                       <button
                         onClick={() => onNavigateToTab('tinyfish')}
-                        className="px-3 py-1 rounded-lg bg-orange-800/40 hover:bg-orange-700/60 text-orange-200 border border-orange-600/40 flex items-center gap-1 text-[11px]"
+                        className="px-3 py-1.5 rounded-lg bg-white hover:bg-stone-100 text-stone-800 border border-stone-200 text-xs font-medium"
                       >
-                        <span>Cross-Publish via TinyFish</span>
-                        <ChevronRight className="w-3 h-3" />
+                        Cross-Publish via TinyFish
                       </button>
                     </div>
                   </div>
@@ -351,20 +336,19 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
               </div>
             </>
           ) : (
-            /* Empty State Guidance */
-            <div className="h-full min-h-[380px] bg-amber-950/15 border-2 border-dashed border-amber-800/40 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
-              <div className="w-16 h-16 rounded-2xl bg-amber-900/30 text-amber-400 flex items-center justify-center border border-amber-700/40 mb-4 shadow-inner">
-                <Sparkles className="w-8 h-8" />
+            <div className="h-full min-h-[380px] bg-white border border-stone-200 rounded-2xl p-8 flex flex-col items-center justify-center text-center shadow-xs">
+              <div className="w-14 h-14 rounded-2xl bg-stone-100 text-stone-600 flex items-center justify-center border border-stone-200 mb-3">
+                <Sparkles className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-serif font-bold text-amber-100">
+              <h3 className="text-base font-serif font-bold text-stone-900">
                 AI Studio Ready for Input
               </h3>
-              <p className="text-xs text-amber-300/80 max-w-sm mt-1.5 leading-relaxed">
-                Click <strong>"Generate Catalog & Price"</strong> at the top to run the background removal, Whisper dialect transcription, Groq LLaMA 3 bilingual listing, and TinyFish live pricing.
+              <p className="text-xs text-stone-500 max-w-sm mt-1 leading-relaxed">
+                Click <strong>"Generate Catalog & Price"</strong> to run background removal, Whisper transcription, Groq LLaMA 3 bilingual copy, and live market pricing.
               </p>
               <button
                 onClick={handleGenerateListing}
-                className="mt-5 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white text-xs font-bold shadow-lg transition-transform hover:scale-105"
+                className="mt-4 px-4 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold shadow-sm transition-transform hover:scale-[1.01]"
               >
                 Run AI Pipeline with Sample Craft
               </button>
