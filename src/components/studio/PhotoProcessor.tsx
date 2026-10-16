@@ -24,33 +24,38 @@ export const PhotoProcessor: React.FC<PhotoProcessorProps> = ({
   };
 
   return (
-    <div className="bg-white border border-stone-200/90 rounded-2xl p-5 shadow-sm space-y-4">
+    <div className="bg-white border border-[#eae5dc] rounded-2xl p-5 shadow-[0_2px_12px_rgba(35,25,15,0.03)] space-y-4">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-stone-100 text-stone-700 flex items-center justify-center border border-stone-200">
+          <div className="w-8 h-8 rounded-lg bg-[#fbf5ee] text-[#b84a28] flex items-center justify-center border border-[#f2e2d0]">
             <Camera className="w-4 h-4" />
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-stone-900 font-serif">
-              Computer Vision Studio (फोटो प्री-प्रोसेसिंग)
-            </h4>
+            <div className="flex items-center gap-2">
+              <h4 className="text-sm font-semibold text-stone-900 font-serif">
+                Daylight Craft Photo (कारीगरी की फ़ोटो)
+              </h4>
+              <span className="text-[10px] font-semibold text-[#1b4d3e] bg-[#f0f7f4] px-2 py-0.2 rounded-full border border-[#d6eae2]">
+                rembg AI
+              </span>
+            </div>
             <p className="text-xs text-stone-500">
-              Auto-removes workshop clutter & prepares standard white e-commerce canvas
+              Workshop clutter stripped to highlight authentic texture • Handcrafted by {craft.artisanName}
             </p>
           </div>
         </div>
 
         {/* Quick Craft Sample Switcher */}
         <div className="flex items-center gap-1.5 self-start sm:self-auto">
-          <span className="text-xs text-stone-500 font-medium">Craft Sample:</span>
+          <span className="text-xs text-stone-500 font-medium">Switch Craft:</span>
           <select
             value={craft.id}
             onChange={(e) => onCraftChange(e.target.value)}
-            className="bg-stone-50 border border-stone-200 rounded-lg px-2.5 py-1 text-xs text-stone-800 font-medium focus:outline-none focus:ring-1 focus:ring-stone-400 cursor-pointer"
+            className="bg-[#faf7f2] border border-[#eae5dc] rounded-lg px-2.5 py-1 text-xs text-stone-800 font-medium focus:outline-none focus:ring-1 focus:ring-amber-700 cursor-pointer"
           >
             {allCrafts.map((c) => (
               <option key={c.id} value={c.id}>
-                {c.name.split(' ')[0]} - {c.category}
+                {c.name.split(' ')[0]} ({c.artisanName})
               </option>
             ))}
           </select>

@@ -48,7 +48,7 @@ export const ClusterCoShipping: React.FC = () => {
               Smart Cluster Co-Shipping (साझा लॉजिस्टिक्स)
             </h1>
             <p className="text-stone-600 text-xs sm:text-sm max-w-2xl mt-1 leading-relaxed">
-              Solo courier pickups in remote villages cost ₹150 for a ₹300 item. KalaSetu detects nearby orders within 48h and aggregates them into a single India Post truck.
+              Solo courier pickups in remote villages cost ₹150 for a ₹300 item. CraftsConnect detects nearby orders within 48h and aggregates them into a single India Post truck.
             </p>
           </div>
 

@@ -2,31 +2,42 @@
 
 @layer base {
   :root {
-    --bg-page: #faf9f6;
+    --bg-page: #fbf9f5;
     --surface-card: #ffffff;
-    --border-subtle: #e7e5e4;
-    --border-hover: #d6d3d1;
+    --border-subtle: #eae5dc;
+    --border-hover: #d8d1c5;
     --text-primary: #1c1917;
-    --text-secondary: #57534e;
-    --text-muted: #78716c;
-    --terracotta: #c2410c;
-    --terracotta-dark: #9a3412;
-    --terracotta-light: #fff7ed;
-    --sage: #166534;
-    --sage-light: #f0fdf4;
-    --font-serif: 'Newsreader', 'Playfair Display', Georgia, Cambria, serif;
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --text-secondary: #524d47;
+    --text-muted: #78716a;
+    --terracotta: #b84a28;
+    --terracotta-dark: #8c3216;
+    --terracotta-light: #fef5ee;
+    --sage: #1b4d3e;
+    --sage-light: #f0f7f4;
+    --ochre: #b45309;
+    --font-serif: 'Newsreader', 'Georgia', serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
   body {
     background-color: var(--bg-page);
+    background-image: radial-gradient(circle at 50% 0%, rgba(184, 74, 40, 0.02) 0%, transparent 60%);
     color: var(--text-primary);
     font-family: var(--font-sans);
+    line-height: 1.6;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 }
 

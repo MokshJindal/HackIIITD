@@ -32,30 +32,35 @@ export const PriceAdvisor: React.FC<PriceAdvisorProps> = ({
   const ondcSavings = amazonLegacyFee;
 
   return (
-    <div className="bg-white border border-stone-200/90 rounded-2xl p-5 shadow-sm space-y-4">
+    <div className="bg-white border border-[#eae5dc] rounded-2xl p-5 shadow-[0_2px_12px_rgba(35,25,15,0.03)] space-y-4">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-stone-100 text-stone-700 flex items-center justify-center border border-stone-200">
+          <div className="w-8 h-8 rounded-lg bg-[#fbf5ee] text-[#b84a28] flex items-center justify-center border border-[#f2e2d0]">
             <TrendingUp className="w-4 h-4" />
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-stone-900 font-serif">
-              Dynamic Price Intelligence (TinyFish लाइव मूल्य निर्धारण)
-            </h4>
+            <div className="flex items-center gap-2">
+              <h4 className="text-sm font-semibold text-stone-900 font-serif">
+                Dynamic Price Intelligence (TinyFish लाइव मूल्य निर्धारण)
+              </h4>
+              <span className="text-[10px] font-semibold text-[#1b4d3e] bg-[#f0f7f4] px-2 py-0.2 rounded-full border border-[#d6eae2]">
+                Live Web Scrape
+              </span>
+            </div>
             <p className="text-xs text-stone-500">
-              Live web benchmark from Amazon Karigar, Etsy, GeM & Craftsvilla
+              Live web benchmark from Amazon Karigar, Etsy, GeM & Craftsvilla to guarantee fair wages
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium">
-          <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-          <span>TinyFish Live Scrape</span>
+        <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#f0f7f4] border border-[#d6eae2] text-[#1b4d3e] text-xs font-medium">
+          <Sparkles className="w-3.5 h-3.5 text-[#1b4d3e]" />
+          <span>Real-time Pricing Guard</span>
         </div>
       </div>
 
       {/* Interactive Price Slider & Benchmarks */}
-      <div className="bg-stone-50 border border-stone-200/80 rounded-xl p-4 space-y-3">
+      <div className="bg-[#faf7f2] border border-[#eae5dc] rounded-xl p-4 space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-xs font-semibold text-stone-700">
             Artisan Selling Price (कारीगर का विक्रय मूल्य):

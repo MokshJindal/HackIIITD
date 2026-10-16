@@ -1,17 +1,17 @@
-# 🏺 KalaSetu (कलासेतु) - AI Handicraft Digitization & Autonomous Marketplace Engine
+# 🏺 CraftsConnect (क्राफ्ट्सकनेक्ट) - AI Handicraft Digitization & Autonomous Marketplace Engine
 
 > **HACKIIITD Hackathon Project**  
 > *Empowering Traditional Indian Artisans to Digitize, Price, and Sell Nationwide without Technical Skills.*
 
-**🌐 Live Demo:** [https://kalasetu-india.vercel.app](https://kalasetu-india.vercel.app) *(Alternate: [https://kalasetu-hackiiitd.vercel.app](https://kalasetu-hackiiitd.vercel.app))*  
-**📦 GitHub:** [https://github.com/MokshJindal/HackIIITD](https://github.com/MokshJindal/HackIIITD)
+**🌐 Live Production Demo:** [https://craftsconnect.vercel.app](https://craftsconnect.vercel.app) *(Alternate: [https://craftsconnect-india.vercel.app](https://craftsconnect-india.vercel.app))*  
+**📦 GitHub Repository:** [https://github.com/MokshJindal/HackIIITD](https://github.com/MokshJindal/HackIIITD)
 
 ---
 
 ## 📌 Problem Statement Overview
 Traditional hand-makers and rural craft clusters in India struggle to sell directly online due to language barriers, technical friction, lack of real-time market price visibility, and fragmented buyer access. Middlemen exploit this information gap, taking up to 70% of product margins while private marketplaces charge 15–30% commissions.
 
-**KalaSetu (कलासेतु)** solves this end-to-end:
+**CraftsConnect (क्राफ्ट्सकनेक्ट)** solves this end-to-end:
 1. **Artisan Input**: The maker captures a photo and records a short voice note in their native dialect (Hindi, Odia, Tamil, Bengali).
 2. **AI Pre-Processing**: Automatically strips workshop clutter (`rembg` / OpenCV), enhances lighting, and transcribes vernacular speech (`Whisper ASR`).
 3. **Bilingual SEO Listings**: Synthesizes search-optimized titles and storytelling descriptions in English and Hindi (`Groq LPU / LLaMA 3`).

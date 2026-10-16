@@ -82,18 +82,23 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
   };
 
   return (
-    <div className="bg-white border border-stone-200/90 rounded-2xl p-5 shadow-sm space-y-4">
+    <div className="bg-white border border-[#eae5dc] rounded-2xl p-5 shadow-[0_2px_12px_rgba(35,25,15,0.03)] space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-stone-100 text-stone-700 flex items-center justify-center border border-stone-200">
+          <div className="w-8 h-8 rounded-lg bg-[#fbf5ee] text-[#b84a28] flex items-center justify-center border border-[#f2e2d0]">
             <Mic className="w-4 h-4" />
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-stone-900 font-serif">
-              Vernacular Voice Note (बोलकर बताएं)
-            </h4>
+            <div className="flex items-center gap-2">
+              <h4 className="text-sm font-semibold text-stone-900 font-serif">
+                Vernacular Voice Note (बोलकर बताएं)
+              </h4>
+              <span className="text-[10px] font-semibold text-[#b84a28] bg-[#fbf5ee] px-2 py-0.2 rounded-full border border-[#f2e2d0]">
+                Whisper ASR
+              </span>
+            </div>
             <p className="text-xs text-stone-500">
-              Speak naturally in your mother tongue — Whisper AI handles dialect transcription
+              Speak naturally in your mother tongue — AI handles dialect recognition and SEO copywriting
             </p>
           </div>
         </div>
@@ -107,13 +112,13 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
       </div>
 
       {/* Main Record Action Box */}
-      <div className="flex flex-col sm:flex-row items-center gap-4 bg-stone-50 border border-stone-200/80 rounded-xl p-4">
+      <div className="flex flex-col sm:flex-row items-center gap-4 bg-[#faf7f2] border border-[#eae5dc] rounded-xl p-4">
         <button
           onClick={isRecording ? stopRecording : startRecording}
           className={`w-14 h-14 rounded-full flex items-center justify-center transition-all duration-200 shadow-sm shrink-0 ${
             isRecording
               ? 'bg-rose-600 text-white ring-4 ring-rose-200 animate-pulse'
-              : 'bg-stone-900 hover:bg-stone-800 text-white hover:scale-105'
+              : 'bg-[#b84a28] hover:bg-[#8c3216] text-white hover:scale-105'
           }`}
           title={isRecording ? 'Tap to Stop' : 'Tap to Record'}
         >

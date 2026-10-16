@@ -80,46 +80,71 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6 space-y-6">
-      {/* Studio Header & Workflow Stepper */}
-      <div className="bg-white border border-stone-200/90 rounded-2xl p-6 shadow-sm text-stone-900">
+      {/* Studio Header & Artisan Heritage Strip */}
+      <div className="bg-white border border-[#eae5dc] rounded-2xl p-6 shadow-[0_2px_12px_rgba(35,25,15,0.03)] text-stone-900 space-y-5">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-stone-100 border border-stone-200 text-stone-700 text-xs font-medium mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-orange-700" />
-              <span>Voice & Computer Vision Onboarding Studio</span>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fbf5ee] border border-[#f2e2d0] text-[#9c3e1e] text-xs font-semibold mb-2.5">
+              <span>🏺</span>
+              <span>CraftsConnect • Zero-Tech Vernacular Studio</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-serif font-bold tracking-tight text-stone-900">
               Digitize Your Craft (अपनी हस्तकला को ऑनलाइन बेचें)
             </h1>
-            <p className="text-stone-600 text-xs sm:text-sm max-w-2xl mt-1 leading-relaxed">
-              No technical skills needed. Capture a photo and record your voice in your mother tongue.
-              Our AI Studio cleans the photo, writes bilingual listings, and suggests fair market prices.
+            <p className="text-stone-600 text-xs sm:text-sm max-w-2xl mt-1.5 leading-relaxed">
+              No technical skills needed. Snap a quick photo and speak in your mother tongue.
+              CraftsConnect cleans the image, crafts SEO listings in Hindi & English, and benchmarks fair prices backed by live web data.
             </p>
           </div>
 
           <button
             onClick={handleGenerateListing}
             disabled={isProcessingAI}
-            className={`flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold shadow-sm transition-all ${
+            className={`flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold shadow-sm transition-all shrink-0 ${
               isProcessingAI
                 ? 'bg-stone-200 text-stone-500 cursor-wait'
-                : 'bg-stone-900 hover:bg-stone-800 text-white hover:scale-[1.01]'
+                : 'bg-stone-900 hover:bg-stone-800 text-amber-50 hover:scale-[1.01]'
             }`}
           >
-            <Sparkles className={`w-4 h-4 ${isProcessingAI ? 'animate-spin' : ''}`} />
-            <span>{isProcessingAI ? 'AI Studio Processing...' : 'Generate Catalog & Price'}</span>
+            <Sparkles className={`w-4 h-4 text-amber-400 ${isProcessingAI ? 'animate-spin' : ''}`} />
+            <span>{isProcessingAI ? 'AI Studio Processing...' : 'Generate Catalog & Fair Price'}</span>
           </button>
         </div>
 
-        {/* Stepper Visualizer */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 pt-5 border-t border-stone-100 text-xs">
+        {/* Human Artisan Story Highlight Strip */}
+        <div className="bg-[#fcfbf9] border border-[#eae5dc] rounded-xl p-4 flex flex-col sm:flex-row items-center sm:items-start gap-3.5">
+          <img
+            src={currentCraft.artisanPhoto}
+            alt={currentCraft.artisanName}
+            className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm shrink-0"
+          />
+          <div className="flex-1 text-center sm:text-left space-y-1">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+              <span className="font-serif font-bold text-sm text-stone-900">
+                {currentCraft.artisanName}
+              </span>
+              <span className="text-[10px] bg-[#f0f7f4] text-[#1b4d3e] font-semibold px-2 py-0.5 rounded-full border border-[#d6eae2]">
+                {currentCraft.village}, {currentCraft.state}
+              </span>
+              <span className="text-[10px] bg-stone-100 text-stone-700 px-2 py-0.5 rounded-full border border-stone-200 font-mono">
+                {currentCraft.giTag.split('(')[0].trim()}
+              </span>
+            </div>
+            <p className="text-xs text-stone-600 italic">
+              "I know how to shape clay on the wheel, but mobile forms were intimidating. With CraftsConnect, I speak in my dialect, and my handicrafts reach buyers across India with 0% platform commission."
+            </p>
+          </div>
+        </div>
+
+        {/* Stepper Visualizer with Human Warmth */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-[#f2eee6] text-xs">
           <div className="flex items-center gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-stone-900 text-white font-bold flex items-center justify-center text-[11px]">
+            <span className="w-6 h-6 rounded-full bg-[#b84a28] text-white font-bold flex items-center justify-center text-[11px] shadow-2xs">
               1
             </span>
             <div>
-              <div className="font-semibold text-stone-900">Media Capture</div>
-              <div className="text-[11px] text-stone-500">Photo + Vernacular Voice</div>
+              <div className="font-semibold text-stone-900">Snap & Speak</div>
+              <div className="text-[11px] text-stone-500">Workshop Photo + Vernacular Voice</div>
             </div>
           </div>
 
@@ -130,20 +155,20 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
               2
             </span>
             <div>
-              <div className="font-semibold text-stone-900">AI Studio Pipeline</div>
-              <div className="text-[11px] text-stone-500">rembg + Whisper + Groq SEO</div>
+              <div className="font-semibold text-stone-900">CraftsConnect Studio</div>
+              <div className="text-[11px] text-stone-500">rembg Clean + Whisper + Bilingual SEO</div>
             </div>
           </div>
 
           <div className="flex items-center gap-2.5">
             <span className={`w-6 h-6 rounded-full font-bold flex items-center justify-center text-[11px] ${
-              isPublished ? 'bg-emerald-700 text-white' : 'bg-stone-100 text-stone-500 border border-stone-200'
+              isPublished ? 'bg-[#1b4d3e] text-white' : 'bg-stone-100 text-stone-500 border border-stone-200'
             }`}>
               3
             </span>
             <div>
-              <div className="font-semibold text-stone-900">Review & Publish</div>
-              <div className="text-[11px] text-stone-500">TinyFish Pricing + ONDC Push</div>
+              <div className="font-semibold text-stone-900">1-Tap ONDC Publish</div>
+              <div className="text-[11px] text-stone-500">Live TinyFish Pricing + Direct Sale</div>
             </div>
           </div>
         </div>
@@ -239,11 +264,24 @@ export const ArtisanStudio: React.FC<ArtisanStudioProps> = ({
                       : generatedListing.descriptionEn}
                   </p>
 
-                  <div className="bg-stone-50 border-l-2 border-stone-800 p-3 rounded-r-lg text-xs text-stone-600 italic">
-                    <strong className="text-stone-900 not-italic font-semibold block mb-0.5">
+                  <div className="bg-[#fcfbf9] border-l-2 border-[#b84a28] p-3 rounded-r-lg text-xs text-stone-700 italic space-y-1">
+                    <strong className="text-stone-900 not-italic font-semibold block">
                       Artisan Lineage & Craft Provenance:
                     </strong>
-                    {generatedListing.heritageStory}
+                    <p>{generatedListing.heritageStory}</p>
+                    <div className="pt-1 flex items-center justify-between text-[11px] not-italic text-stone-500 border-t border-[#f0ece4]">
+                      <span>Authentic Batch: <strong>#CC-{currentCraft.id.toUpperCase()}-2026</strong></span>
+                      <span className="font-serif italic text-stone-800">✍️ Handcrafted by {currentCraft.artisanName}</span>
+                    </div>
+                  </div>
+
+                  {/* Human Dignity & Direct Payout Notice */}
+                  <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-[#f0f7f4] border border-[#d6eae2] text-xs">
+                    <span className="text-[#1b4d3e] font-medium flex items-center gap-1.5">
+                      <span>🌿</span>
+                      <span>100% of purchase goes directly to artisan bank account via ONDC</span>
+                    </span>
+                    <span className="font-bold text-[#1b4d3e] font-mono">0% Middleman Cut</span>
                   </div>
 
                   {/* SEO Tags */}

@@ -76,7 +76,7 @@ export const NegotiationBot: React.FC = () => {
       const botMsg: ChatMessage = {
         id: `m-${Date.now() + 1}`,
         sender: 'bot',
-        textEn: `[KalaSetu Vernacular AI Mediator]: ${reply.targetEnglish}`,
+        textEn: `[CraftsConnect Vernacular AI Mediator]: ${reply.targetEnglish}`,
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
       setMessages((prev) => [...prev, botMsg]);

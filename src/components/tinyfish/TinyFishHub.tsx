@@ -170,7 +170,7 @@ export const TinyFishHub: React.FC = () => {
               <div className="text-[11px] text-stone-600 pt-1 space-y-1">
                 <div>• HSN Code: <strong>69120010 (Clay / Terracotta)</strong></div>
                 <div>• GI Provenance: <strong>GI-AP-541 Verified</strong></div>
-                <div>• Image URL: <strong>s3://kalasetu-cdn/craft-1-clean.png</strong></div>
+                <div>• Image URL: <strong>s3://craftsconnect-cdn/craft-1-clean.png</strong></div>
               </div>
             </div>
 

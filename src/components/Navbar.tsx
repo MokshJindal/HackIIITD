@@ -54,12 +54,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
           </span>
-          <span className="font-medium text-stone-800">
-            KalaSetu (कलासेतु)
+          <span className="font-semibold text-stone-900 tracking-tight font-serif">
+            CraftsConnect (क्राफ्ट्सकनेक्ट)
           </span>
           <span className="text-stone-300">/</span>
           <span className="hidden sm:inline text-stone-500">
-            HACKIIITD • Handicraft Digitization & ONDC Linkage
+            HACKIIITD • Handicraft Digitization & ONDC Direct Linkage
           </span>
         </div>
 
@@ -98,16 +98,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => setActiveTab('studio')}
           className="flex items-center gap-2.5 cursor-pointer group"
         >
-          <div className="w-8 h-8 rounded-lg bg-stone-900 text-stone-50 flex items-center justify-center font-serif font-black text-sm shadow-sm group-hover:bg-orange-700 transition-colors">
-            क
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#b84a28] to-[#8c3216] text-white flex items-center justify-center font-serif font-black text-base shadow-sm group-hover:scale-105 transition-transform border border-amber-900/20">
+            <span>🏺</span>
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="text-lg font-bold tracking-tight text-stone-900 font-serif">KalaSetu</span>
-              <span className="text-xs font-medium text-stone-600 bg-stone-100 px-1.5 py-0.2 rounded border border-stone-200">कलासेतु</span>
+              <span className="text-lg font-bold tracking-tight text-stone-900 font-serif">CraftsConnect</span>
+              <span className="text-[10px] font-semibold text-amber-900 bg-amber-50 px-1.5 py-0.2 rounded border border-amber-200/80">
+                क्राफ्ट्सकनेक्ट
+              </span>
             </div>
-            <p className="text-[10px] text-stone-500 -mt-0.5">
-              Zero-Technical Skill Artisan Digitization Platform
+            <p className="text-[11px] text-stone-500 -mt-0.5">
+              Empowering Traditional Artisans with Zero Technical Barriers
             </p>
           </div>
         </div>

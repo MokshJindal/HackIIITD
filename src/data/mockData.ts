@@ -290,7 +290,7 @@ export const MOCK_GOV_SCHEMES: GovScheme[] = [
     benefit: 'Instant working capital for purchasing raw clay, glazes, wood, brass, or silk yarns without property mortgage.',
     maxAmount: 'Up to ₹5,00,000',
     interestRate: '8.4% - 9.2%',
-    deadline: 'Instant Processing via KalaSetu Shilp-Score',
+    deadline: 'Instant Processing via CraftsConnect Shilp-Score',
     eligibility: ['Digitized inventory on ONDC', 'Active trade for 6+ months', 'Shilp-Score > 650'],
     category: 'Credit',
     applyUrl: 'https://mudra.org.in',

@@ -45,9 +45,9 @@ export const ONDCGateway: React.FC = () => {
       action: 'on_search',
       core_version: '1.2.0',
       bap_id: 'buyer-app.paytm.com',
-      bpp_id: 'snp.kalasetu.mystore.in',
-      bpp_uri: 'https://snp.kalasetu.mystore.in/beckn',
-      transaction_id: 'tx-kala-98214-ondc',
+      bpp_id: 'snp.craftsconnect.in',
+      bpp_uri: 'https://snp.craftsconnect.in/beckn',
+      transaction_id: 'tx-craftsconnect-98214-ondc',
       message_id: 'msg-ondc-beckn-5521',
       timestamp: new Date().toISOString(),
       country: 'IND',
@@ -56,8 +56,8 @@ export const ONDCGateway: React.FC = () => {
     message: {
       catalog: {
         'bpp/descriptor': {
-          name: 'KalaSetu Artisan Federation (Gorakhpur Cluster)',
-          symbol: 'https://kalasetu.in/assets/logo.png',
+          name: 'CraftsConnect Artisan Federation (Gorakhpur Cluster)',
+          symbol: 'https://craftsconnect.vercel.app/logo.png',
           short_desc: 'Direct Rural Artisan Empowerment Node',
         },
         'bpp/providers': [
@@ -160,7 +160,7 @@ export const ONDCGateway: React.FC = () => {
             <div className="w-7 h-7 rounded-full bg-stone-900 text-white mx-auto flex items-center justify-center font-bold text-xs">
               2
             </div>
-            <div className="font-bold text-stone-900">KalaSetu SNP Adapter</div>
+            <div className="font-bold text-stone-900">CraftsConnect SNP Adapter</div>
             <p className="text-stone-500 text-[11px]">Beckn Protocol & GI Validation</p>
           </div>
 

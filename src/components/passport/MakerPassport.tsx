@@ -25,7 +25,7 @@ export const MakerPassport: React.FC = () => {
   const [repairSubmitted, setRepairSubmitted] = useState<boolean>(false);
 
   useEffect(() => {
-    const passportUrl = `https://kalasetu.in/verify/${craft.id}?artisan=${encodeURIComponent(craft.artisanName)}`;
+    const passportUrl = `https://craftsconnect.vercel.app/verify/${craft.id}?artisan=${encodeURIComponent(craft.artisanName)}`;
     QRCode.toDataURL(passportUrl, {
       width: 240,
       margin: 1.5,
@@ -84,7 +84,7 @@ export const MakerPassport: React.FC = () => {
                 <span>100% Handcrafted in India</span>
               </span>
               <span className="px-2.5 py-1 rounded-full bg-stone-100 text-stone-700 border border-stone-200 text-xs font-mono">
-                Cert ID: #KALA-{craft.id.toUpperCase()}-7721
+                Cert ID: #CC-{craft.id.toUpperCase()}-7721
               </span>
             </div>
 
@@ -222,7 +222,7 @@ export const MakerPassport: React.FC = () => {
                 Packaging Authenticity Seal
               </div>
               <h3 className="font-serif font-bold text-lg text-stone-900 mt-0.5">
-                KalaSetu Verified Seal
+                CraftsConnect Verified Seal
               </h3>
               <p className="text-xs text-stone-500">
                 Scan with any phone camera to meet the maker

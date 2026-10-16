@@ -83,12 +83,15 @@ export function App() {
       </main>
 
       {/* Bottom Evaluation Showcase Bar */}
-      <footer className="sticky bottom-0 z-40 bg-white/95 border-t border-stone-200/90 backdrop-blur-md py-2 px-4 shadow-[0_-2px_10px_rgba(0,0,0,0.03)]">
+      <footer className="sticky bottom-0 z-40 bg-white/95 border-t border-[#eae5dc] backdrop-blur-md py-2.5 px-4 shadow-[0_-2px_12px_rgba(40,30,20,0.03)]">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs">
           <div className="flex items-center gap-2 text-stone-800">
-            <span className="font-semibold text-stone-900 font-serif">KalaSetu Evaluation Deck:</span>
+            <span className="font-bold text-stone-900 font-serif flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#b84a28]"></span>
+              <span>CraftsConnect Evaluation Deck:</span>
+            </span>
             <span className="hidden md:inline text-stone-500 text-[11px]">
-              Directly jump to any module:
+              Directly jump to any interactive module:
             </span>
           </div>
 
@@ -100,13 +103,13 @@ export function App() {
                 <button
                   key={mod.id}
                   onClick={() => setActiveTab(mod.id)}
-                  className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium whitespace-nowrap transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all duration-150 ${
                     isSelected
-                      ? 'bg-stone-900 text-white shadow-2xs font-semibold'
-                      : 'bg-stone-50 text-stone-600 hover:text-stone-900 hover:bg-stone-100 border border-stone-200/80'
+                      ? 'bg-stone-900 text-amber-50 shadow-xs font-semibold'
+                      : 'bg-[#faf7f2] text-stone-600 hover:text-stone-900 hover:bg-stone-100 border border-[#eae5dc]'
                   }`}
                 >
-                  <Icon className={`w-3 h-3 ${isSelected ? 'text-white' : 'text-stone-500'}`} />
+                  <Icon className={`w-3.5 h-3.5 ${isSelected ? 'text-amber-400' : 'text-stone-400'}`} />
                   <span>{mod.label}</span>
                 </button>
               );
